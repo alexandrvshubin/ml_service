@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: detect-service
+spec:
+  type: ClusterIP
+  selector:
+    app: detect
+  ports:
+    - port: 80
+      targetPort: 8000

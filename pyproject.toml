@@ -1,0 +1,42 @@
+[project]
+name = "detect-service"
+version = "0.1.13"
+description = "ML_PRO_HW1"
+requires-python=">=3.11,<3.13"
+
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "scipy",
+    "pydantic",
+    "pydantic-settings",
+    "pandas",
+    "scikit-learn>=1.9.1",
+    "joblib",
+    "psycopg[binary]"
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "httpx",
+    "locust",
+    "ruff",
+]
+
+[build-system]
+requires = ["uv_build>=0.10,<0.11"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "detect"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: нужна база данных - адрес в DATABASE_URL"]
+
+[tool.ruff]
+line-length = 150
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
