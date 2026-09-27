@@ -136,7 +136,6 @@ jobs:
 
           kubectl exec deploy/postgres -- psql -U postgres -d detect \
             -tc "SELECT count(*) FROM predictions" | grep -q 1
-
       - name: диагностика
         if: failure()
         run: |
