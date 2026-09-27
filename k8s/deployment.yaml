@@ -23,7 +23,7 @@ spec:
             - configMapRef:
                 name: detect-config
             - secretRef:
-                name: detect-secret
+                name: detect-secrets
 
           startupProbe:
             httpGet:
