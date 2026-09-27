@@ -50,4 +50,4 @@ spec:
               memory: 256Mi
             limits:
               cpu: 500m
-              memory: 512Mi
+              memory: 51200000000Mi
