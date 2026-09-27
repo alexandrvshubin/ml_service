@@ -5,7 +5,6 @@ from psycopg.types.json import Json
 
 from detect.config import settings
 
-
 DDL = """
 CREATE TABLE IF NOT EXISTS predictions (
     request_id      uuid PRIMARY KEY,

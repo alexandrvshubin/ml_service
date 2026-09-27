@@ -1,6 +1,7 @@
-import httpx
 import statistics
 import time
+
+import httpx
 
 URL = "http://localhost:8000"
 ROW = {"url": "ya.ru", "title": "Сегодня: +14⁠…⁠+20⁠° · переменная облачность, без осадков"}
