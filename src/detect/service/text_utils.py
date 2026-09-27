@@ -1,5 +1,6 @@
 import re
 
+
 def clean_text(text):
     if not isinstance(text, str):
         text = str(text)

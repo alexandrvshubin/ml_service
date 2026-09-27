@@ -14,34 +14,40 @@ spec:
     spec:
       containers:
         - name: api
-          image: hw1-api:latest
+          image: detect-service:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
-          env:
-            - name: DATABASE_URL
-              value: "postgresql://postgres:postgres@localhost:5432/detect"
+
+          envFrom:
+            - configMapRef:
+                name: detect-config
+            - secretRef:
+                name: detect-secrets
+
           startupProbe:
-            httpGet: { path: /health, port: 8000 }
+            httpGet:
+              path: /health
+              port: 8000
             failureThreshold: 30
             periodSeconds: 2
-          livenessProbe:
-            httpGet: { path: /health, port: 8000 }
-            periodSeconds: 10
-          readinessProbe:
-            httpGet: { path: /ready, port: 8000 }
-            periodSeconds: 5
-          resources:
-            requests: { cpu: "100m", memory: "256Mi" }
-            limits: { cpu: "500m", memory: "512Mi" }
 
-        - name: db
-          image: postgres:16
-          env:
-            - name: POSTGRES_PASSWORD
-              value: "postgres"
-            - name: POSTGRES_DB
-              value: "detect"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            periodSeconds: 5
+
           resources:
-            requests: { cpu: "100m", memory: "128Mi" }
-            limits: { cpu: "200m", memory: "256Mi" }
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
     model_path: str = "src/hw4_pipeline.pkl"
     database_url: str | None = None
