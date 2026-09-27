@@ -3,7 +3,6 @@ import os
 import psycopg
 import pytest
 
-
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 pytestmark = [
