@@ -4,4 +4,4 @@ metadata:
   name: detect-config
 data:
   LOG_LEVEL: "INFO"
-  MODEL_PATH: src/does-not-exist.pkl
+  MODEL_PATH: src/hw4_pipeline.pkl
